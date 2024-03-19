@@ -16,12 +16,6 @@
 
 <p align="left"><sup>1</sup>Tsinghua University &ensp; <sup>2</sup>Tencent&ensp; <sup>*</sup> Equal Contribution<sup>&ensp; &#x2709</sup>  Corresponding Author</p>
 
-
------------------
-
-![](https://black.readthedocs.io/en/stable/_static/license.svg)
-![](https://img.shields.io/badge/code%20style-black-000000.svg)
-
 [Project Page](https://sites.google.com/view/chain-of-spot/) | [Arxiv Paper](https://arxiv.org/abs/???) | [Huggingface Model](https://huggingface.co/Zuyan/llava-CoS-13B)
 
 ## Chain-of-Spot
