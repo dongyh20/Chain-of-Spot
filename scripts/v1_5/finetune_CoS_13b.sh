@@ -10,7 +10,7 @@ WANDB_MODE=offline deepspeed llava/train/train_mem_CoS.py \
     --model_name_or_path ./checkpoints/llava-v1.5-13b-ckpt \
     --version v1 \
     --data_path ./playground/data/llava_v1_5_mix665k.json \
-    --IR_data_path /PATH/TO/YOUR/DATA \
+    --cos_data_path /PATH/TO/YOUR/DATA \
     --image_folder ./playground/data \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --pretrain_mm_mlp_adapter ./checkpoints/llava-v1.5-13b-ckpt/mm_projector.bin \

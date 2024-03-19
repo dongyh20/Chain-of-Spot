@@ -66,8 +66,8 @@ class ModelArguments:
 class DataArguments:
     data_path: str = field(default=None,
                            metadata={"help": "Path to the training data."})
-    IR_data_path: str = field(default=None,
-                           metadata={"help": "Path to the training IR data."})
+    cos_data_path: str = field(default=None,
+                           metadata={"help": "Path to the training cos data."})
     lazy_preprocess: bool = False
     is_multimodal: bool = False
     image_folder: Optional[str] = field(default=None)
@@ -629,15 +629,13 @@ def preprocess(
 class LazySupervisedDataset(Dataset):
     """Dataset for supervised fine-tuning."""
 
-    def __init__(self, data_path: str, IR_data_path: str,
+    def __init__(self, data_path: str, cos_data_path: str,
                  tokenizer: transformers.PreTrainedTokenizer,
                  data_args: DataArguments):
         super(LazySupervisedDataset, self).__init__()
         list_data_dict = json.load(open(data_path, "r"))
 
-        self.IR_json_list = []
-        with open(IR_data_path) as f:
-            self.IR_json_list.append(json.load(f))
+        self.cos_json = json.load(open('chain-of-spot.json', 'r'))
 
         rank0_print("Formatting inputs...Skip in lazy mode")
         self.tokenizer = tokenizer
@@ -719,21 +717,21 @@ class LazySupervisedDataset(Dataset):
             question_id = np.random.randint(question_num)
             image_name = f'{llava_id}_{image_id}_q{question_id}'
             try:
-                IR_meta_data = self.IR_json_list[image_name]
+                cos_meta_data = self.cos_json[image_name]
 
                 # Note that param is converted
                 if width_ori > height_ori:
-                    width_left = IR_meta_data['params'][1]
-                    width_right = width_left + IR_meta_data['params'][2]
-                    height_top = IR_meta_data['params'][0] + (width_ori - height_ori) // 2
-                    height_bottom = height_top + IR_meta_data['params'][2]
+                    width_left = cos_meta_data['params'][1]
+                    width_right = width_left + cos_meta_data['params'][2]
+                    height_top = cos_meta_data['params'][0] + (width_ori - height_ori) // 2
+                    height_bottom = height_top + cos_meta_data['params'][2]
                     width_right = min(width_right, width_ori)
                     height_bottom = min(height_bottom, height_ori + (width_ori - height_ori) // 2)
                 else:
-                    height_top = IR_meta_data['params'][0]
-                    height_bottom = height_top + IR_meta_data['params'][2]
-                    width_left = IR_meta_data['params'][1] + (height_ori - width_ori) // 2
-                    width_right = width_left + IR_meta_data['params'][2]
+                    height_top = cos_meta_data['params'][0]
+                    height_bottom = height_top + cos_meta_data['params'][2]
+                    width_left = cos_meta_data['params'][1] + (height_ori - width_ori) // 2
+                    width_right = width_left + cos_meta_data['params'][2]
                     height_bottom = min(height_bottom, height_ori)
                     width_right = min(width_right, width_ori + (height_ori - width_ori) // 2)
                 crop_scale = [round(width_left/width, 3), 
@@ -831,7 +829,7 @@ class DataCollatorForSupervisedDataset(object):
 def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer,
                                 data_args) -> Dict:
     """Make dataset and collator for supervised fine-tuning."""
-    train_dataset = LazySupervisedDataset(tokenizer=tokenizer,
+    train_dataset = LazySupervisedDataset(tokenizer=tokenizer, cos_data_path=data_args.cos_data_path, 
                                 data_path=data_args.data_path,
                                 data_args=data_args)
     data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
