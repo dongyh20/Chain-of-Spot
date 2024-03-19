@@ -38,12 +38,21 @@ This technique allows VLMs to access more detailed visual information without al
 
 ## Get Started
 
-1. **LLaVA Preparations**: We choose [LLaVA](https://github.com/haotian-liu/LLaVA) as our base model, so please follow the [instructions](https://github.com/haotian-liu/LLaVA/blob/main/README.md) to install essential codebase for running LLaVA. Or you can simply run the following scripts:
+1. **Environmental Setup**: We choose LLaVA-1.5 as our base model. You can run the following scripts to set-up your environment for Chain-of-Spot evaluation:
 
    ```
-   git clone https://github.com/haotian-liu/LLaVA
-   cd LLaVA
+   git clone https://github.com/dongyh20/Chain-of-Spot.git
+   cd Chain-of-Spot
+   conda create -n cos python=3.10 -y
+   conda activate cos
    pip install -e .
+   ```
+
+   For the Chain-of-Spot fine-tuning from LLaVA-1.5, please follow the following scripts:
+
+   ```
+   pip install -e ".[train]"
+   pip install flash-attn --no-build-isolation
    ```
 
 2. **Initial Weights**: We use [LLaVA-1.5-7B](https://huggingface.co/liuhaotian/llava-v1.5-7b) and [LLaVA-1.5-13B](https://huggingface.co/liuhaotian/llava-v1.5-13b) for finetuning, you may download these models and put them in the `./checkpoint` folder.
