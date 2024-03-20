@@ -125,7 +125,12 @@ LLaVA-1.5 with **Chain-of-Spot** (CoS) a  achieves state-of-the-art performance 
 If you found this repository useful, please consider citing:
 
 ``` 
-Arxiv paper link (coming soon)
+@article{liu2024chain,
+title={Chain-of-Spot: Interactive Reasoning Improves Large Vision-Language Models},
+author={Liu, Zuyan and Dong, Yuhao and Rao, Yongming and Zhou, Jie and Lu, Jiwen},
+journal={arXiv preprint arXiv:2403.12966},
+year={2024}
+}
 ```
 
 ## Acknowledgements
