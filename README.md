@@ -16,7 +16,7 @@
 
 <p align="left"><sup>1</sup>Tsinghua University &ensp; <sup>2</sup>Tencent&ensp; <sup>*</sup> Equal Contribution<sup>&ensp; &#x2709</sup>  Corresponding Author</p>
 
-[Project Page](https://sites.google.com/view/chain-of-spot/) | [Arxiv Paper](https://arxiv.org/abs/???) | [Huggingface Model](https://huggingface.co/Zuyan/llava-CoS-13B)
+[Project Page](https://sites.google.com/view/chain-of-spot/) | [Arxiv Paper](https://arxiv.org/abs/2403.12966) | [Huggingface Model](https://huggingface.co/Zuyan/llava-CoS-13B)
 
 ## Chain-of-Spot
 
@@ -33,7 +33,7 @@ This technique allows VLMs to access more detailed visual information without al
 **[2024-03]**
 
 1. 🤗 Introducing our project homepage: https://sites.google.com/view/chain-of-spot
-2. 🤗 Check our [paper](https://arxiv.org/abs/???) introducing **Chain-of-Spot** in details. 
+2. 🤗 Check our [paper](https://arxiv.org/abs/2403.12966) introducing **Chain-of-Spot** in details. 
 3. 🤗 Check our [model](https://huggingface.co/Zuyan/llava-CoS-13B) on huggingface.
 
 ## Get Started
