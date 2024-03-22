@@ -79,7 +79,7 @@ This technique allows VLMs to access more detailed visual information without al
 
 5. **Evaluations on Various Benchmarks**: We follow the [Evaluation Docs](https://github.com/haotian-liu/LLaVA/blob/main/docs/Evaluation.md) in LLaVA to conduct our experiments. If you find it laborious and complex, please check [LMMs-Eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) for faster evaluation.
 
-6. **Start Training!** The finetuning process takes around 20 hours on 8*A100 (80G) for LLaVA-1.5-13B. We fintune LLaVA-1.5 using Deepspeed Zero-3, you can directly run the [scripts](https://github.com/dongyh20/Chain-of-Spot/tree/master/scripts/v1_5/finetune_CoS_13b.sh) to launch training:
+6. **Start Training!** The finetuning process takes around 20 hours on 8*A100 (80G) for LLaVA-1.5-13B. We finetune LLaVA-1.5 using Deepspeed Zero-3, you can directly run the [scripts](https://github.com/dongyh20/Chain-of-Spot/tree/master/scripts/v1_5/finetune_CoS_13b.sh) to launch training:
 ```bash ./scripts/v1_5/finetune_CoS_13b.sh```
 
 **Contact: Leave issue or contact `liuzuyan19@gmail.com` and `dongyh20@mails.tsinghua.edu.cn`. We are on call to respond.**
